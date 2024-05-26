@@ -4,7 +4,7 @@ mongoose.connect("mongodb+srv://SM_db:galgot47@smcluster0.o7xqtze.mongodb.net/pa
 
 
 //Schema for users
-const userSchema = mongoose.SChema({
+const userSchema = mongoose.Schema({
     username: {
         type: String,
         required: true,

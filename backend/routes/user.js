@@ -15,6 +15,12 @@ const signupSchema = zod.object({
     lastName: zod.string()
 })
 
+router.get("/hello", async(req,res)=>{
+    return res.json({
+        messsage: "hello indeed"
+    })
+})
+
 router.post("/signup", async (req,res)=> {
     const body = req.body;
     const {success} = signupSchema.safeParse(req.body);
