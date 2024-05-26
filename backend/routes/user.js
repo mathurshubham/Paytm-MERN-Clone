@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { Account } = require("../db");
 
 const zod = require("zod");
 const {User} = require("../db");
@@ -25,12 +26,12 @@ router.post("/signup", async (req,res)=> {
     const body = req.body;
     const {success} = signupSchema.safeParse(req.body);
     if(!success){
-        return res.json({
+        return res.status(411).json({
             message: "Email/Password Incorrect  inputs"
         })
     }
 
-    const user = User.findOne({
+    const user = await User.findOne({
         username: body.username
     })
 
@@ -73,7 +74,7 @@ const signinSchema = zod.object({
 })
 
 router.post("/signin", async (req,res)=>{
-    const { success } = signinBody.safeParse(req.body)
+    const { success } = signinSchema.safeParse(req.body)
     if (!success) {
         return res.status(411).json({
             message: "Incorrect inputs"
@@ -116,14 +117,17 @@ const updateBody = zod.object({
 })
 
 router.put("/", authMiddleware, async (req, res) => {
-    const { success } = updateBody.safeParse(req.body)
+    const { success } = updateBody.safeParse(req.body);
     if (!success) {
         res.status(411).json({
             message: "Error while updating information"
         })
     }
 
-		await User.updateOne({ _id: req.userId }, req.body);
+	await User.updateOne(req.body, {
+        id: req.userId
+    })
+
 	
     res.json({
         message: "Updated successfully"

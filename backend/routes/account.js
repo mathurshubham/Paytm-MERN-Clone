@@ -1,6 +1,7 @@
 const express = require('express');
 const { default: mongoose } = require('mongoose');
 const { authMiddleware } = require('../middleware');
+const { Account } = require('../db'); 
 const router = express.Router();
 
 router.get("/balance", authMiddleware, async (req, res) =>{
@@ -43,7 +44,7 @@ router.post("/transfer", authMiddleware, async(req,res)=>{
     //ammount transfer
 
     await Account.updateOne({userId: req.userId}, {$inc: {balance: -amount} }).session(session);
-    await Account.updateOne({userId: req.to}, {$inc:{balance: amount} }).session(session);
+    await Account.updateOne({userId: to}, {$inc:{balance: amount} }).session(session);
 
     //commit transaction
 
