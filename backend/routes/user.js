@@ -31,11 +31,11 @@ router.post("/signup", async (req,res)=> {
         })
     }
 
-    const user = await User.findOne({
-        username: body.username
+    const existingUser = await User.findOne({
+        username: req.body.username
     })
 
-    if (user._id){
+    if (existingUser){
         return res.json({
             message: "Email already taken / Incorrect inputs"
         })
