@@ -1,3 +1,4 @@
+import React from 'react';
 import { BottomWarning } from "../components/BottomWarning";
 import { Heading } from "../components/Heading"
 import { InputBox } from "../components/InputBox"
