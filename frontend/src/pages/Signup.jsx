@@ -8,7 +8,6 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-
 export const Signup = () =>{
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -34,7 +33,7 @@ export const Signup = () =>{
                 }} placeholder={"abc@email.com"} label={"Email"} />
                 <InputBox onChange={ (e) => {
                     setPassword(e.target.value);
-                }} placeholder={"123456"} label={"Password"} />
+                }} placeholder={"123456"} label={"Password"} type={"password"} />
                 
                 <div className="pt-4">
                     <Button onClick={async ()=>{

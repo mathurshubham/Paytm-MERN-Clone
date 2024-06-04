@@ -24,10 +24,11 @@ router.get("/hello", async(req,res)=>{
 
 router.post("/signup", async (req,res)=> {
     const body = req.body;
-    const {success} = signupSchema.safeParse(req.body);
-    if(!success){
+    const { success } = signupSchema.safeParse(req.body)
+    if (!success) {
+        console.log("Safeparse didnt happen", success);
         return res.status(411).json({
-            message: "Email/Password Incorrect  inputs"
+            message: "Email already taken / Incorrect inputs"
         })
     }
 
