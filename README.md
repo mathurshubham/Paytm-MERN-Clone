@@ -1,5 +1,24 @@
 
-## Build a basic version of PayTM
+# Paytm App - based on MERN 
 
 
-https://projects.100xdevs.com/tracks/oAjvkeRNZThPMxZf4aX5/heWTf4Qw2ebu8MRaQv5C
+
+
+
+
+## Deployment
+
+To deploy this project run. 
+
+Backend:
+```bash
+  npm i ./backend/
+  node ./backend/index.js
+```
+
+Backend:
+```bash
+    cd ./frontend
+    npm install
+    npm run dev 
+```
