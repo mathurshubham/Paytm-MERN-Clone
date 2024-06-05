@@ -22,3 +22,5 @@ Backend:
     npm install
     npm run dev 
 ```
+
+Sign up through http://localhost:8000/signup
